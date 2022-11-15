@@ -17,6 +17,8 @@ export class InstDetailComponent implements OnInit {
   
   TheList: Instrument[]; 
 
+  //We are injecting the instrument array from the service
+  // and making it equal to TheList!
   constructor(InstSrv: InstrumentService) { 
     this.TheList = InstSrv.get(); 
   }

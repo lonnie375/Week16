@@ -14,6 +14,7 @@ export class InstListComponent implements OnInit {
   // We set it to a variable that is an array of Instrument. 
   // We are taking it into the constructor. 
   TheLists: Instrument[];
+  
   constructor(InstSrv: InstrumentService) { 
     this.TheLists = InstSrv.get(); 
   }
