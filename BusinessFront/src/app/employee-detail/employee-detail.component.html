@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!editMode">
     <table class="table">
         <tbody>
             <tr>
@@ -25,6 +25,36 @@
             </tbody>
 
     </table>
-    <button>Edit</button>
+    <button (click)="turnOnEditMode()">Edit</button>
     <button (click)="deleteMe2()">Delete</button>
+</div>
+<div *ngIf="editMode">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>id</td><td>{{employee.id}}</td>
+            </tr>
+            <tr>
+                <td>First Name</td><td><input type="text" [(ngModel)]="editFirstName"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td><td><input type="text" [(ngModel)]="editLastName"></td>
+            </tr>
+            <tr>
+                <td>Phone</td><td><input type="text" [(ngModel)]="editphone"></td>
+            </tr>
+            <tr>
+                <td>Email</td><td><input type="text" [(ngModel)]="editemail"></td>
+            </tr>
+            <tr>
+                <td>Department</td><td><input type="text" [(ngModel)]="editdepartment"></td>
+            </tr>
+            <tr>
+                <td>Hire Date</td><td><input type="date" [(ngModel)]="editHireDate"></td>
+            </tr>
+            </tbody>
+
+    </table>
+    <button (click)="saveChanges()">Save Changes</button>
+    <button (click)="cancel()">Cancel</button>
 </div>

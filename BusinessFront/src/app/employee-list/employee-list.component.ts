@@ -36,6 +36,12 @@ export class EmployeeListComponent implements OnInit {
         this.TheList = result; 
       }
     );
+    this.newFirstName = '', 
+    this.newLastName = '', 
+    this.newphone = '', 
+    this.newemail = '', 
+    this.newdepartment = '', 
+    this.newHireDate = new Date(); 
   }
 
   deleteOne(id: number){
@@ -46,6 +52,34 @@ export class EmployeeListComponent implements OnInit {
       },
       id
       )
+  }
+
+  saveNew(){
+    let newPeep: Employee = {
+      id: 0, 
+      firstname: this.newFirstName,
+      lastname: this.newLastName, 
+      phone: this.newphone, 
+      email: this.newemail, 
+      department: this.newdepartment, 
+      hiredate: this.newHireDate
+    };
+
+    this.empSrv.add(
+      (result:  Employee) => {
+        this.refresh(); 
+      }, 
+      newPeep
+    )
+  }
+
+  updateOne(updatedEmp: Employee){
+    this.empSrv.update(
+      (result: ApiResponse) => {
+        this.refresh(); 
+      }, 
+      updatedEmp
+    )
   }
 
 }
