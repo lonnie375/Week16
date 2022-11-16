@@ -1,5 +1,6 @@
 import { HttpClient, HttpXhrBackend } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { DeckofcardsService } from './deckofcards.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'HttpPractice';
 
 // Let's ask Angular to supply the HttpClient
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private docSrv: DeckofcardsService){}
 
   httpDemo() {
     let url = 'https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'; 
@@ -20,7 +21,26 @@ export class AppComponent {
       }
     );
   }
+
+  
+
+
+//The call back function goes inside of getDeck. 
+//This is how we will do it in the future. 
+// We will receive through dependency injection a service. 
+// We'll call a function in the service, and pass in a callback function. 
+// The service will do the API call, and call our callback 
+// so we can receive the data 
+  test2() {
+    this.docSrv.getDeck(
+      (result: any) => {
+        console.log('Back in App Component'); 
+        console.log(result); 
+      }
+    ); 
   }
+  }
+
 
 
 //This is just an example. We normally inject the HttpClient so that it is stored once. 

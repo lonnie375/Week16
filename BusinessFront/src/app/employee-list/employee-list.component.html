@@ -1,0 +1,14 @@
+<div>
+    <div>
+        <h1>Add New Employee</h1>
+        First Name: <input type="text" [(ngModel)]="newFirstName"><br>
+        Last Name: <input type="text" [(ngModel)]="newLastName"><br>
+        Phone: <input type="text"[(ngModel)]="newphone"><br>
+        Email: <input type="text" [(ngModel)]="newemail"><br>
+        Department: <input type="text" [(ngModel)]="newdepartment"><br>
+        Hire Date: <input type="date" [(ngModel)]="newHireDate"><br>
+    </div>
+    <ng-container *ngFor="let emp of TheList">    
+                <app-employee-detail [employee] ="emp" (delete)="deleteOne($event)"></app-employee-detail>
+        </ng-container>
+</div>

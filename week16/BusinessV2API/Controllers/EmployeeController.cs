@@ -35,18 +35,19 @@ namespace BusinessV2API.Controllers
 
         // (D)elete
         [HttpDelete]
-        public string Delete(int id)
+        public APIResponse Delete(int id)
         {
             Employee.Delete(id);
-            return ("ok");
+            return new APIResponse() { status = "ok" }; 
+          
         }
 
         // (U)pdate
         [HttpPut]
-        public string Update(Employee emp)
+        public APIResponse Update(Employee emp)
         {
             Employee.Update(emp);
-            return "Ok";
+            return new APIResponse() { status = "ok" };
         }
     }
 }
